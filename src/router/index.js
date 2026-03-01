@@ -2,6 +2,7 @@ import DemoPage from "@/views/DemoPage.vue";
 import LoginPage from "@/views/LoginPage.vue";
 import SignUpPage from "@/views/SignUpPage.vue";
 import { createRouter, createWebHistory } from "vue-router";
+import MainPage from "./MainPage.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -21,6 +22,10 @@ const router = createRouter({
         {
             path: '/signup',
             component:SignUpPage
+        },
+        {
+            path: '/main',
+            component: MainPage
         }
     ]
 })

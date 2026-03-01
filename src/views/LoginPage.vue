@@ -42,6 +42,7 @@ export default {
         login() {
             console.log("이메일:", this.email);
             console.log("비밀번호:", this.password);
+            this.$router.push('/main');
         }, 
     },
 };
