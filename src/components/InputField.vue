@@ -1,23 +1,51 @@
 <template>
     <div class="container">
-        <input class="input-form" :type="type" :placeholder="placeholder" :value="modelValue" @input="updateValue"/>
+        <input class="input-form" 
+        :type="type" 
+        :placeholder="placeholder" 
+        :value="modelValue" 
+        @input="updateValue"
+        @blur="handleBlur"
+        />
+        <span v-if="!modelValue && showError" class="error-message">{{ errorMsg }}.</span>
     </div>
 </template>
 
 <script>
 export default {
     name :"InputField",
+    data() {
+        return {
+            showError: false,
+        };
+    },
     props: {
-        type: String,
-        placeholder: String,
-        modelValue: String,
+        type: {
+            type: String,
+            default: "text"
+        },
+        placeholder: {
+            type: String,
+            default: "입력하세요"
+        },  
+        modelValue: {
+            type: String,
+            require: true,
+        },
+        errorMsg: {
+            type: String,
+            default: "이 값은 필수입니다",
+        },
     },   
     emits: ['update:modelValue'],
     methods: {
         updateValue(event) {
             const value = event.target.value.trim();
             this.$emit('update:modelValue', value);
-        }
+        },
+        handleBlur() {
+            this.showError = true;
+        },
     }
 }
 </script>
@@ -29,7 +57,7 @@ export default {
 }
 
 .input-form {
-    box-sizing: border-box; /* 패딩과 테두리를 포함한 높이와 너비, box-sizing: content-box는 패딩과 테두리를 제외한 너비 */
+    box-sizing: border-box;
     width: 100%;
     padding: 10px;
     border-radius: 5px;

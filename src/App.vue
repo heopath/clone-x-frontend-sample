@@ -19,8 +19,9 @@ body {
 .container {
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center ;
+  align-items: center;
 } 
 
 .logo-container {
@@ -44,5 +45,11 @@ body {
         width: 100%;
         cursor: pointer;
 }
+
+.error-message {
+   color: red;
+   font-size: small;
+   width: 100%;
+} 
 
 </style>
