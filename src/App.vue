@@ -10,7 +10,7 @@ export default {
 };
 </script>
 
-<style> /* scoped 스타일 컴포넌트까지만 적용 /컨테너 클래스명를 컨테이너로 쓰고 있기 때문에 에러 발생  */
+<style>
 body {
   background-color: black;
   color: white;

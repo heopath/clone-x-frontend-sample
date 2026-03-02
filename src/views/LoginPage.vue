@@ -59,6 +59,7 @@ export default {
         width: 100%;
         cursor: pointer;
 }
+
 .signup-button {
         color: aqua;
         cursor: pointer;

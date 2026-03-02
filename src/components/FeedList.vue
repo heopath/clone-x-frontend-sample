@@ -6,7 +6,7 @@
             </div>
             <button class="feed-delete-button">X</button>
         </div>
-        <div class="feed-name">{{ feed.name }}</div>
+        <div class="feed-name">{{ feed.user.name }}</div>
     </div>
   </div>
 </template>

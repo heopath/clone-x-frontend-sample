@@ -1,18 +1,18 @@
 <template>
   <div>
+    <button @click="removeFirstItem">Remove First Item</button>
+    <button @click="removeLastItem">Remove Last Item</button>
     <ul>
-      <li v-for="(item, index) in items" :key="index">
-        <span>{{ item.id }} - </span>
-        <span>{{ item.name }}</span>
-      </li>
+      <ItemComponent v-for="item in items" :key="item.id" :item="item"/>
     </ul>
   </div>
 </template>
 
 <script>
-
+import ItemComponent from "@/components/ItemComponent.vue";
 export default {
     name: "DemoPage",
+    components: { ItemComponent },
     data() {
         return {
           items:[
@@ -24,6 +24,14 @@ export default {
           ],
         };
     },
+    methods: {
+      removeFirstItem() {
+        this.items.shift();
+      },
+      removeLastItem() {
+        this.items.pop();
+      },
+    }
 };
 
 </script>
