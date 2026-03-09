@@ -66,7 +66,7 @@ const testData = [
   },
   {
     id: 3,
-    content: "디버깅만 몇 시간째…",
+    content: "디버깅만 몇 시간째.",
     created_at: "2025-01-04T11:00:00.000Z",
     user: {
       id: 11,
