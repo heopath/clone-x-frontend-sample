@@ -32,10 +32,6 @@ export default {
             no: '아뇨',
             yes: '네'
           },
-          /**
-          * Callback Function
-          * @param {Boolean} confirm
-          */
           callback: confirm => {
             if (confirm) {
               console.log(confirm);
