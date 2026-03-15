@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import api from '@/api';
+import { api } from '@/api';
 import InputField from '@/components/InputField.vue';
 export default {
     name: "SignUpPage",
