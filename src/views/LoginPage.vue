@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import { useUserStore } from '@/store/user';
+import { api } from '@/api'
 import InputField from '../components/InputField.vue';
 
 export default {
@@ -34,14 +36,32 @@ export default {
     },
     data() {
         return {
+            UserStore: useUserStore(),
             email: "",
             password: "",
         };
     },
     methods: {
-        login() {
-            console.log("이메일:", this.email);
-            console.log("비밀번호:", this.password);
+        async login() {
+            if(!this.email || !this.password) {
+                alert('모든 필드를 입력해주세요.')
+                return
+            }
+            const payload = {
+                email : this.email,
+                password : this.password
+            }
+            try {
+                const response = await api.post("/users/login", payload)
+                console.log("로그인 성공")
+                this.UserStore.setUser(response.data)
+                this.UserStore.saveToken(response.data.access_token)
+            }catch(error) {
+                console.error("로그인 실패", error)
+                console.error("응답 상태", error.response?.status);
+                console.error("응답 데이터", error.response?.data);
+                alert("로그인 실패!! 다시 시도해 주세요.")
+            }
             this.$router.push('/main');
         }, 
     },
